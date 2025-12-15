@@ -24,7 +24,9 @@ export function calculateZoneCost(paths, scene) {
   let cost = 0;
   let previousZone = null;
   let currentZone = null;
+  let first = true;
   for (const path of paths) {
+    currentZone = null;
     for (const region of scene.regions) {
 
       if (!region.behaviors.filter(it => it.type == "modifyMovementCost").length)
@@ -35,15 +37,18 @@ export function calculateZoneCost(paths, scene) {
       if (!coordinateInRegion)
         continue;
 
-      previousZone ??= region.id;
+      if (first)
+        previousZone = region.id;
       currentZone = region.id;
-
-      if (currentZone == previousZone)
-        break;
-
-      cost += 1;
-      previousZone = currentZone;
+      break;
     }
+    first = false;
+
+    if (currentZone == previousZone)
+      continue;
+
+    cost += 1;
+    previousZone = currentZone;
   }
   return cost;
 }
