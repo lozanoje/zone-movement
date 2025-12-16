@@ -88,6 +88,9 @@ export function calculateZoneCost(paths, scene) {
     if (currentZone == previousZone)
       continue;
 
+    if (previousZone == null && !countNoRegionAsZone)
+      continue;
+
     cost += 1;
     previousZone = currentZone;
   }
