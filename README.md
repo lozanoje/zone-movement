@@ -32,6 +32,9 @@ And that's it!
    - Adjacent Region: Medium
    - Up to 4 Regions: Long
    - More than 4 regions: Extreme
+- Configure custom labels for the distances above
+   - Accepts Translation keys
+- Consider or skip areas without regions on the zone calculation
 
 # Tested Systems
 Systems do not need to do anything to use this module. It should be fairly simple to use it.
