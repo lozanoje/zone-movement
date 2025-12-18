@@ -1,6 +1,9 @@
 {
   "ZONE-MOVEMENT": {
-    "zone": "zona",
+    "zone": {
+      "singular": "zona",
+      "plural": "zonas"
+    },
     "DistanceLabel": {
       "Name": "Mostrar etiquetas de distancias",
       "Hint": "Conmutar para mostrar etiquetas de distancia al poner rutas de movimiento, basado en las reglas de Coriolis: The Great Dark.",
