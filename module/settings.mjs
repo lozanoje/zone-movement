@@ -40,6 +40,20 @@ function allSettings() {
     default: true,
   };
 
+  settingsToRegister.gridlessStepSize = {
+    config: true,
+    name: "ZONE-MOVEMENT.GridlessStepSize.Name",
+    hint: "ZONE-MOVEMENT.GridlessStepSize.Hint",
+    scope: 'world',
+    type: Number,
+    default: null,
+    range: {
+      min: 5,
+      step: 5,
+      max: 500,
+    },
+  };
+
   return settingsToRegister;
 }
 

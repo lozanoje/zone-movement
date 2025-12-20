@@ -16,7 +16,7 @@ This module changes how the scene measure works, allowing you to measure that ba
 3. In your world, enable the module on the module settings.
 
 ## How to configure a map to use zones
-1. On the Grid configuration, change the unit to `zone`
+1. On the Grid configuration, change the unit to `zone`. Even if you use another language, use `zone` on the configuration. The label will be translated to the language (if a translation is available).
    - The module will only measure the distances in zones if you configure the unit to that
 2. Create regions on the map to define your zones. You need to add a `Modify Movement Cost` *behaviour* on the region
    - You don't need to change the values of the movement cost
@@ -35,6 +35,11 @@ And that's it!
 - Configure custom labels for the distances above
    - Accepts Translation keys
 - Consider or skip areas without regions on the zone calculation
+
+## Gridless maps
+Although the module supports gridless maps, it is important to mention that some distances are not 100% accurated. Especially in cases where the token is very close to the border of the region.
+
+If you are having issues with that, you can try to change the new configuraiton "Gridless Step Size" to a smaller value. This will create more "steps" on the movement line. This will improve accuracy, but may increase calculation times.
 
 # Tested Systems
 Systems do not need to do anything to use this module. It should be fairly simple to use it.

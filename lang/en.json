@@ -48,6 +48,10 @@
     "CountNoRegionAsZone": {
       "Name": "Count No Region as Zone",
       "Hint": "If enabled, areas without a defined region will be treated as their own zone for movement calculations. If you are using gridless maps, or if you have gaps between regions, you may want to enable this setting."
+    },
+    "GridlessStepSize": {
+      "Name": "Gridless Step Size",
+      "Hint": "When using gridless maps, the module will calculate the paths based on the movement line. To do that, we can use the grid size (default, if the value is empty) or use a defined size (in pixels). Keep in mind that smaller step sizes will improve the accuracy but may increase calculation time."
     }
   }
 }

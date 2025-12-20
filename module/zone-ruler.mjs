@@ -2,9 +2,11 @@ export function getPath(waypoint) {
   if (!waypoint.previous) return [];
 
   const grid = game.canvas.grid;
+  const gridSize = game.settings.get("zone-movement", "gridlessStepSize") || grid.size;
+  console.log("Grid Size for Zone Movement:", gridSize);
 
   if (grid.type == CONST.GRID_TYPES.GRIDLESS)
-    return getGridlessPath(waypoint, grid.size);
+    return getGridlessPath(waypoint, gridSize);
 
   let point = waypoint;
   const paths = [];
