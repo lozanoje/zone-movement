@@ -39,8 +39,8 @@ function getGridlessPath(waypoint, step) {
 
     if (distance === 0) {
       paths.push({
-        x: start.x,
-        y: start.y,
+        x: end.x,
+        y: end.y,
         elevation: 0
       });
       point = point.previous;
@@ -51,23 +51,23 @@ function getGridlessPath(waypoint, step) {
     const uy = dy / distance;
 
     const steps = Math.floor(distance / step);
-    let firstSegment = true;
 
-    for (let i = steps; i >= 0; i--) {
-      if (!firstSegment && i === steps) continue;
+    for (let i = 0; i <= steps; i++) {
       paths.push({
-        x: start.x + ux * step * i,
-        y: start.y + uy * step * i,
+        x: end.x - ux * step * i,
+        y: end.y - uy * step * i,
         elevation: 0
       });
     }
-    firstSegment = false;
 
-    paths.push({
-      x: end.x,
-      y: end.y,
-      elevation: 0
-    });
+    const last = paths[paths.length - 1];
+    if (last.x !== start.x || last.y !== start.y) {
+      paths.push({
+        x: start.x,
+        y: start.y,
+        elevation: 0
+      });
+    }
 
     point = point.previous;
   }
@@ -102,6 +102,8 @@ export function calculateZoneCost(paths, scene, executed = false) {
       currentZone = region.id;
       break;
     }
+    if (executed && first && logDebugMessages)
+      console.log("Zone Movement | Starting point:", path, "From:", previousZone, "To:", currentZone);
     first = false;
 
     if (currentZone == null && !countNoRegionAsZone)
